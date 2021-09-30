@@ -10,4 +10,10 @@
     <color name="lightCyan1">#e0f8f8</color>
     <color name="lightCyan2">#f7fdfd</color>
     <color name="blue">#2A1F6D</color>
+    <color name="drugs_list_color">#eeeeee</color>
+    <color name="light_gray_color">#BFBDBE</color>
+    <color name="ok_color">#019875</color>
+    <color name="cancel_color">#019875</color>
+
+
 </resources>
