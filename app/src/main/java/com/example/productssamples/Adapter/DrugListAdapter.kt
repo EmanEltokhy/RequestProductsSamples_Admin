@@ -46,10 +46,9 @@ class DrugListAdapter (private val drugs: MutableList<DrugsModel> , private val 
                 holder.delete_item.setOnClickListener(View.OnClickListener { v: View? ->
                     val alertDialog =
                         AlertDialog.Builder(context)
-                            .setTitle("Delete " + drugs.get(position).Drug_Name)
+                            .setTitle("Delete " + drugs[position].Drug_Name)
                             .setMessage(
-                                "Do you want to delete " + drugs.get(position).Drug_Name
-                                    .toString() + " ?"
+                                "Do you want to delete " + drugs[position].Drug_Name + " ?"
                             )
                             .setPositiveButton(
                                 "Yes"
