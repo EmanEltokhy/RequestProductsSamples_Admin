@@ -40,22 +40,21 @@ class DrugsListActivity : AppCompatActivity() {
 
          drugs = mutableListOf<DrugsModel>().apply {
             add(DrugsModel(Drug_Name = "Royal Vit", Drug_Price = "EGP 30",Drug_Image = "https://www.sedico.net/english/products/webpages/RoyalVitG/RoyalVitG.png"))
-            add(DrugsModel(Drug_Name = "Panadol", Drug_Price = "EGP 12",Drug_Image = "http://egyptiandrugstore.com/image/cache/data/manar5/panadol-500x500.png"))
-            add(DrugsModel(Drug_Name = "Panadol Red", Drug_Price = "EGP 26",Drug_Image = "http://egyptiandrugstore.com/image/cache/data/manar5/panadol%20extra-500x500.png"))
+            add(DrugsModel(Drug_Name = "Panadol", Drug_Price = "EGP 12",Drug_Image = "https://i2.wp.com/wikivera.com/wp-content/uploads/2021/03/MGK5158-GSK-Panadol-Tablets-455x455-1.png"))
+            add(DrugsModel(Drug_Name = "Panadol Red", Drug_Price = "EGP 26",Drug_Image = "https://i-cf65ch.gskstatic.com/content/dam/global/panadol/ar_ae/allproducts/300x300/4.1.A.1_300x300_Panadol%20Extra.png?auto=format"))
             add(DrugsModel(Drug_Name = "Royal Vit", Drug_Price = "EGP 30",Drug_Image = "https://www.sedico.net/english/products/webpages/RoyalVitG/RoyalVitG.png"))
-            add(DrugsModel(Drug_Name = "Panadol", Drug_Price = "EGP 12",Drug_Image = "http://egyptiandrugstore.com/image/cache/data/manar5/panadol-500x500.png"))
-            add(DrugsModel(Drug_Name = "Panadol Red", Drug_Price = "EGP 26",Drug_Image = "http://egyptiandrugstore.com/image/cache/data/manar5/panadol%20extra-500x500.png"))
+            add(DrugsModel(Drug_Name = "Panadol", Drug_Price = "EGP 12",Drug_Image = "https://i2.wp.com/wikivera.com/wp-content/uploads/2021/03/MGK5158-GSK-Panadol-Tablets-455x455-1.png"))
+            add(DrugsModel(Drug_Name = "Panadol Red", Drug_Price = "EGP 26",Drug_Image = "https://i-cf65ch.gskstatic.com/content/dam/global/panadol/ar_ae/allproducts/300x300/4.1.A.1_300x300_Panadol%20Extra.png?auto=format"))
             add(DrugsModel(Drug_Name = "Royal Vit", Drug_Price = "EGP 30",Drug_Image = "https://www.sedico.net/english/products/webpages/RoyalVitG/RoyalVitG.png"))
-            add(DrugsModel(Drug_Name = "Panadol", Drug_Price = "EGP 12",Drug_Image = "http://egyptiandrugstore.com/image/cache/data/manar5/panadol-500x500.png"))
-            add(DrugsModel(Drug_Name = "Panadol Red", Drug_Price = "EGP 26",Drug_Image = "http://egyptiandrugstore.com/image/cache/data/manar5/panadol%20extra-500x500.png"))
+            add(DrugsModel(Drug_Name = "Panadol", Drug_Price = "EGP 12",Drug_Image = "https://i2.wp.com/wikivera.com/wp-content/uploads/2021/03/MGK5158-GSK-Panadol-Tablets-455x455-1.png"))
+            add(DrugsModel(Drug_Name = "Panadol Red", Drug_Price = "EGP 26",Drug_Image = "https://i-cf65ch.gskstatic.com/content/dam/global/panadol/ar_ae/allproducts/300x300/4.1.A.1_300x300_Panadol%20Extra.png?auto=format"))
             add(DrugsModel(Drug_Name = "Royal Vit", Drug_Price = "EGP 30",Drug_Image = "https://www.sedico.net/english/products/webpages/RoyalVitG/RoyalVitG.png"))
-            add(DrugsModel(Drug_Name = "Panadol", Drug_Price = "EGP 12",Drug_Image = "http://egyptiandrugstore.com/image/cache/data/manar5/panadol-500x500.png"))
-            add(DrugsModel(Drug_Name = "Panadol Red", Drug_Price = "EGP 26",Drug_Image = "http://egyptiandrugstore.com/image/cache/data/manar5/panadol%20extra-500x500.png"))
+            add(DrugsModel(Drug_Name = "Panadol", Drug_Price = "EGP 12",Drug_Image = "https://i2.wp.com/wikivera.com/wp-content/uploads/2021/03/MGK5158-GSK-Panadol-Tablets-455x455-1.png"))
+            add(DrugsModel(Drug_Name = "Panadol Red", Drug_Price = "EGP 26",Drug_Image = "https://i-cf65ch.gskstatic.com/content/dam/global/panadol/ar_ae/allproducts/300x300/4.1.A.1_300x300_Panadol%20Extra.png?auto=format"))
         }
         displaydrugs.addAll(drugs)
         val adapter = DrugListAdapter(displaydrugs , this)
         recycler = findViewById<RecyclerView>(R.id.recycler)
-        //recycler.layoutManager = LinearLayoutManager(this)
         recycler.layoutManager = GridLayoutManager(this,2)
         recycler.adapter = adapter
         findViewById<Button>(R.id.upload_excel).setOnClickListener {
