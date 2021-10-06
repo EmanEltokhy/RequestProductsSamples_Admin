@@ -4,30 +4,35 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".DrugsListActivity">
+    tools:context=".LandingActivity">
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler"
+        android:id="@+id/recycler_landing"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
         android:layout_marginHorizontal="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_upload_drugs"/>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/upload_excel"
+        android:id="@+id/btn_upload_drugs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:text="Upload CVS Sheet"
-        app:icon="@drawable/ic_insert_drive_file"
+        android:text="Upload New Drugs"
+        app:icon="@drawable/ic_baseline_medical_services_24"
         app:iconGravity="textStart"
         android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/recycler_landing"
         app:layout_constraintBottom_toBottomOf="parent"
         android:background="@drawable/rounded_corners"
         android:textAllCaps="false"/>
+
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
