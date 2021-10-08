@@ -4,8 +4,6 @@ import android.app.AlertDialog
 import android.app.Dialog
 import android.content.Context
 import android.content.DialogInterface
-import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,13 +14,19 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.productssamples.DbQuery
 import com.example.productssamples.Model.DrugsModel
 import com.example.productssamples.R
-import com.example.productssamples.UpdateDrugsActivity
-import java.io.Serializable
 
 class DrugListAdapter (private var drugs: MutableList<DrugsModel> ,private val context: Context) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+    var DB  = DbQuery()
+
+
+
+
+
 
 
     /*companion object {
@@ -51,6 +55,8 @@ class DrugListAdapter (private var drugs: MutableList<DrugsModel> ,private val c
 
         when (holder) {
             is DrugsViewHolder -> {
+                DB!!.Instance_Of_DbQuery(context)
+
 
                 val drug_item: DrugsModel = drugs[position]
                 holder.drugName.setText(drug_item.Drug_Name)
@@ -72,6 +78,7 @@ class DrugListAdapter (private var drugs: MutableList<DrugsModel> ,private val c
                             ) { dialog: DialogInterface?, which: Int ->
 
                                 // code for delete item
+                                DB!!.deleteDrugItem(drugs.get(position))
                                 drugs.removeAt(position)
                                 notifyDataSetChanged()
                                // DrugListAdapter.adapter?.notifyDataSetChanged()
@@ -121,7 +128,8 @@ class DrugListAdapter (private var drugs: MutableList<DrugsModel> ,private val c
 
                         else if (!TempDrugName.contentEquals("") && !TempDrugPrice.contentEquals("") && !TempDrugImage.contentEquals(""))
                         {
-                            var edttedModel = DrugsModel(Drug_Name = TempDrugName, Drug_Price = TempDrugPrice ,Drug_Image = TempDrugImage)
+                            var edttedModel = DrugsModel(Drug_Id = drugs[position].Drug_Id , Drug_Name = TempDrugName, Drug_Price = TempDrugPrice ,Drug_Image = TempDrugImage)
+                            DB!!.updateDrug(edttedModel)
                             drugs.set(position,edttedModel)
                             Toast.makeText(context , "Edited Successfully" , Toast.LENGTH_LONG).show()
                             notifyDataSetChanged()
@@ -166,6 +174,8 @@ class DrugListAdapter (private var drugs: MutableList<DrugsModel> ,private val c
     }
 
 }
+
+
 class DrugsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     var drugImg: ImageView = view.findViewById(R.id.drug_img_id)
     var drugName: TextView = view.findViewById(R.id.drug_name_id)
