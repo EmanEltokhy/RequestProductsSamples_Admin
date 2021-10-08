@@ -97,7 +97,9 @@ class DrugsListActivity : AppCompatActivity() {
                 }
                 fis.close()
             }
-            Toast.makeText(this@DrugsListActivity, sb.toString(), Toast.LENGTH_SHORT).show()
+            var line: String = sb.lines()[0]
+            var list:List<String> = line.split(",").toList()
+            Toast.makeText(this@DrugsListActivity, list[0] , Toast.LENGTH_SHORT).show()
 
     }
 
