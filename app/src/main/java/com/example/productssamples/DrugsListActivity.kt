@@ -147,8 +147,12 @@ class DrugsListActivity : AppCompatActivity() {
             }
             fis.close()
         }
-        Toast.makeText(this@DrugsListActivity, sb.toString(), Toast.LENGTH_SHORT).show()
-
+        // make a list of lines
+        for(i in 0 until sb.lines().size) {
+            var line: String = sb.lines()[i]
+            var list: List<String> = line.split(",").toList()
+            Toast.makeText(this@DrugsListActivity, sb.toString(), Toast.LENGTH_SHORT).show()
+        }
     }
 
     override fun onRequestPermissionsResult(
