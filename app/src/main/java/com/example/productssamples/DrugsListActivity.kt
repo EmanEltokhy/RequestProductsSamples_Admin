@@ -69,18 +69,19 @@ class DrugsListActivity : AppCompatActivity() {
         recycler.layoutManager = GridLayoutManager(this, 2)
         //recycler.adapter = adapter
         findViewById<Button>(R.id.upload_excel).setOnClickListener {
-            if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+           // if (checkSelfPermission(android.Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                 var i = Intent()
                 i.type = "text/*"
                 i.setAction(Intent.ACTION_GET_CONTENT)
                 startActivityForResult(Intent.createChooser(i, "Open CSV"), FILE_REQUEST_CODE)
-            } else {
+           // }
+             /*else {
                 requestPermissions(
                     arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE),
                     READ_REQUEST_CODE
                 )
                 var i = Intent()
-            }
+            }*/
 
         }
     }
@@ -148,10 +149,12 @@ class DrugsListActivity : AppCompatActivity() {
             fis.close()
         }
         // make a list of lines
-        for(i in 0 until sb.lines().size) {
+        for(i in 0 until sb.lines().size-1) {
             var line: String = sb.lines()[i]
             var list: List<String> = line.split(",").toList()
-            Toast.makeText(this@DrugsListActivity, sb.toString(), Toast.LENGTH_SHORT).show()
+            var temp =  DrugsModel(Drug_Name = list.get(0), Drug_Price = list.get(1),Drug_Image = list.get(1) , Drug_Id = "0")
+            DB!!.addDrug(temp)
+           // Toast.makeText(this@DrugsListActivity, list.size, Toast.LENGTH_SHORT).show()
         }
     }
 
