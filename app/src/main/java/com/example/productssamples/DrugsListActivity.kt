@@ -32,6 +32,7 @@ private const val MANAGE_REQUEST_CODE = 15
 
 class DrugsListActivity : AppCompatActivity() {
     var DB: DbQuery? = null
+    lateinit var adapter : DrugListAdapter
     var drugs = mutableListOf<DrugsModel>()
     var progressBar: ProgressBar? = null
     var displaydrugs = mutableListOf<DrugsModel>()
@@ -65,7 +66,7 @@ class DrugsListActivity : AppCompatActivity() {
         // val adapter = DrugListAdapter(displaydrugs , this)
         loadDrugs()
         recycler = findViewById<RecyclerView>(R.id.recycler)
-        //recycler.layoutManager = LinearLayoutManager(this)
+
         recycler.layoutManager = GridLayoutManager(this, 2)
         //recycler.adapter = adapter
         findViewById<Button>(R.id.upload_excel).setOnClickListener {
@@ -105,7 +106,7 @@ class DrugsListActivity : AppCompatActivity() {
                         drugs.add(tempDrug)
                     }
                     progressBar?.setVisibility(View.GONE)
-                    val adapter = DrugListAdapter(drugs, this)
+                     adapter = DrugListAdapter(drugs, this)
                     recycler.adapter = adapter
 
                 }
@@ -125,8 +126,21 @@ class DrugsListActivity : AppCompatActivity() {
             if (requestCode == FILE_REQUEST_CODE && resultCode == RESULT_OK) {
                 data?.let {
                     var path = data.data.toString()
-                    filepath = path.substring(path.lastIndexOf("%") + 3)
-                    accessFIle()
+                    filepath = path.substring(path.length - 8 ).toLowerCase()
+                    /*Toast.makeText(
+                        applicationContext,
+                        path,
+                        Toast.LENGTH_LONG
+                    ).show()
+
+                    Toast.makeText(
+                        applicationContext,
+                        filepath,
+                        Toast.LENGTH_LONG
+                    ).show()*/
+
+                   // filepath = path.substring(path.lastIndexOf("%") + 3 )
+                   accessFIle()
                 }
             }
         }
@@ -152,10 +166,15 @@ class DrugsListActivity : AppCompatActivity() {
         for(i in 0 until sb.lines().size-1) {
             var line: String = sb.lines()[i]
             var list: List<String> = line.split(",").toList()
-            var temp =  DrugsModel(Drug_Name = list.get(0), Drug_Price = list.get(1),Drug_Image = list.get(1) , Drug_Id = "0")
+            var temp =  DrugsModel(Drug_Name = list.get(0), Drug_Price = list.get(1),Drug_Image = list.get(2) , Drug_Id = "0")
+            drugs.add(temp)
             DB!!.addDrug(temp)
+
            // Toast.makeText(this@DrugsListActivity, list.size, Toast.LENGTH_SHORT).show()
         }
+        adapter = DrugListAdapter(drugs, this)
+        recycler.adapter = adapter
+        adapter.notifyDataSetChanged()
     }
 
     override fun onRequestPermissionsResult(
